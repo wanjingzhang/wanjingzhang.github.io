@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gray scale</title>
+    <style>
+      .designer {
+        width: 100px;
+        height: 200px;
+      }
+      .is-content {
+        width: 100%;
+        height: auto;
+        filter: grayscale(100%) blur(0);
+        transform: scale(1);
+        box-shadow: 8px 8px 50px transparent;
+        transition: all 0.85s var(--ease-out-expo);
+      }
+      .designer:hover .is-content {
+        filter: grayscale(0) blur(0) !important;
+        transform: scale(1.05);
+        box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.35);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="designer">
+      <img
+        class="is-content"
+        src="../assets/imgs/Portrait_VernaMichelitsch.jpg"
+        width="600"
+        height="800"
+        alt="Portrait_VernaMichelitsch"
+        caption=""
+        data-width="original"
+        data-scaling="no"
+      />
+    </div>
+  </body>
+</html>
