@@ -58,3 +58,24 @@ Traceback (most recent call last):
 IndexError: string index out of range
 >>>
 ```
+
+> 平方
+
+```
+>>> 5 ** 2
+25
+>>> width = 20
+>>> height = 5 * 9
+>>> width * height
+900
+>>> 4 * 3.75 - 1
+14.0
+>>> 14.0
+
+```
+
+> flask 框架
+
+```
+最小最快捷扩展性更佳的 web 应用框架
+```
