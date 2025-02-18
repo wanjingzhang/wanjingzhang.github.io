@@ -1,3 +1,6 @@
+> 安装 Python
+`C:\Users\CelineZ\AppData\Local\Programs\Python`
+
 > 查找 Python:
 
 ```
@@ -14,11 +17,18 @@
 > 退出 Python
 `quit()`
 
+> 连续行
+`>>> if the_world_is_flat:
+...     print("Be careful not to fall off!")
+...
+Be careful not to fall off!`
+
 > 计算
 
 ```
 >>> 2+2
 >>> 4
+>>> 5 ** 2 # 5 squared
 ```
 
 > 访问未定义变量
@@ -78,4 +88,52 @@ IndexError: string index out of range
 
 ```
 最小最快捷扩展性更佳的 web 应用框架
+```
+
+> 循环
+
+```
+>>> a,b = 0,1
+>>> while a < 10:
+...     print('The value a is:',a)
+...     a,b = b, a+b
+
+>>> x = int (input("Please enter an integer:")) 
+Please enter an integer:42
+>>> if x <0:
+...     x = 0
+...     print('Negative changed to zero')
+... elif x == 0:
+...     print('Zero')
+... elif x == 1: 
+...     print('Single')
+... else:     
+...     print('More') 
+... 
+More
+ 
+>>> words = ['cat','window','defenstrate']
+>>> for w in words:
+...     print(w,len(w)) 
+
+>>> users = {'Hans': 'active', 'Éléonore': 'inactive', '景太郎': 'active'}
+>>> for user, status in users.copy().items():
+...     if status=='inactive':
+...             del users[user] 
+>>> users
+{'Hans': 'active', '景太郎': 'active'}
+>>>
+>>> active_users = {}
+>>> for user, status in users.items():  
+...     if status == 'active':
+...             active_users[user] = status
+... 
+>>> 
+>>> active_users
+{'Hans': 'active', '景太郎': 'active'}
+
+>>> for i in range(5):  # 等差数列
+...     print(i)
+
+>>> sum(range(4)) # 0+1+2+3
 ```
