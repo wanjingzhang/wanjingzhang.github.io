@@ -9,7 +9,7 @@ def get_balance():
     payload = ''
     headers = {
         'Accept': 'application/json',
-        'Authorization': 'Bearer '  # Your actual API token
+        'Authorization': 'Bearer sk-197d795c9bbb41cda7aaa568a9d6f178'  # Your actual API token
     }
     conn.request("GET", "/user/balance", payload, headers)
 
