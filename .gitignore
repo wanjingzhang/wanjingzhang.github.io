@@ -9,3 +9,6 @@ src/components.d.ts
 src/auto-import.d.ts
 
 dist/
+
+vuecore/
+vuecore/vue-project
