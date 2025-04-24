@@ -10,6 +10,6 @@ src/auto-import.d.ts
 
 dist/
 
-vuecore/
-vuecore/vue-project
-vuecore/vue-project/core
+vuecore/ 
+vuecore/vue-project/core/
+
