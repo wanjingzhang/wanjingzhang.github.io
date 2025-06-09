@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端登录页面原型设计</title>
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffd6b0 0%, #ffb88c 50%, #ff671f 100%);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            margin: 40px 0;
+            gap: 32px;
+            justify-content: center;
+        }
+        .mobile-mockup {
+            width: 370px;
+            height: 700px;
+            background: #222;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .login-card {
+            width: 320px;
+            padding: 36px 24px 24px 24px;
+            border-radius: 24px;
+            background: rgba(255,255,255,0.55);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        .login-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #222;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .login-desc {
+            color: #666;
+            font-size: 15px;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+        .input-group {
+            position: relative;
+            margin-bottom: 18px;
+        }
+        .input-group label {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px 38px 12px 40px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.85);
+            font-size: 15px;
+            color: #222;
+            box-shadow: 0 2px 8px rgba(255,103,31,0.06);
+            outline: none;
+            transition: box-shadow 0.2s, border 0.2s;
+        }
+        .input-group input:focus {
+            box-shadow: 0 0 0 2px #ff671f44;
+            border: 1.5px solid #ff671f;
+        }
+        .input-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff671f;
+            font-size: 18px;
+            pointer-events: none;
+        }
+        .input-group .toggle-pw {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #bbb;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .options-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 18px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #666;
+        }
+        .remember-me input[type="checkbox"] {
+            accent-color: #ff671f;
+            margin-right: 6px;
+        }
+        .forgot-link {
+            font-size: 13px;
+            color: #ff671f;
+            text-decoration: none;
+            transition: text-decoration 0.2s;
+        }
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 13px 0;
+            background: linear-gradient(90deg, #ffb88c 0%, #ff671f 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255,103,31,0.10);
+            transition: background 0.2s, transform 0.1s;
+        }
+        .login-btn:active {
+            transform: scale(0.98);
+        }
+        .register-row {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            margin-top: 6px;
+        }
+        .register-link {
+            color: #ff671f;
+            text-decoration: none;
+            margin-left: 4px;
+        }
+        .register-link:hover {
+            text-decoration: underline;
+        }
+        /* 右侧设计说明 */
+        .specs {
+            flex: 1;
+            min-width: 320px;
+            max-width: 420px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+            padding: 32px 28px;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .specs h2 {
+            color: #222;
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+        .specs .color-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .specs .color-block {
+            width: 60px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 500;
+            color: #fff;
+        }
+        .specs .color-block.text {
+            background: #333;
+        }
+        .specs .color-block.subtext {
+            background: #666;
+        }
+        .specs .color-block.bg {
+            background: #fff;
+            color: #888;
+            border: 1px solid #eee;
+        }
+        .specs ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .specs li {
+            margin-bottom: 13px;
+            color: #555;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .specs li strong {
+            color: #ff671f;
+        }
+        .specs ul ul {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            padding-left: 18px;
+        }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+            .specs {
+                margin-top: 0;
+            }
+        }
+    </style>
+    <!-- 图标库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+<body>
+    <div class="container">
+        <div class="mobile-mockup">
+            <form class="login-card" id="loginForm">
+                <div class="login-title">欢迎回来</div>
+                <div class="login-desc">请登录您的账号</div>
+                <div class="input-group">
+                    <label for="username">用户名</label>
+                    <i class="ri-user-3-line input-icon"></i>
+                    <input type="text" id="username" placeholder="请输入用户名" required autocomplete="username">
+                </div>
+                <div class="input-group">
+                    <label for="password">密码</label>
+                    <i class="ri-lock-2-line input-icon"></i>
+                    <input type="password" id="password" placeholder="请输入密码" required autocomplete="current-password">
+                    <i class="ri-eye-off-line toggle-pw" id="togglePw" style="cursor:pointer;"></i>
+                </div>
+                <div class="options-row">
+                    <label class="remember-me"><input type="checkbox" id="remember">记住我</label>
+                    <a href="#" class="forgot-link">忘记密码?</a>
+                </div>
+                <button type="submit" class="login-btn">登 录</button>
+                <div class="register-row">
+                    还没有账号？<a href="#" class="register-link">立即注册</a>
+                </div>
+            </form>
+        </div>
+        <div class="specs">
+            <h2>设计说明</h2>
+            <div class="color-row">
+                <div class="color-block" style="background:#ff671f">主色 #ff671f</div>
+                <div class="color-block text">主文字 #333</div>
+                <div class="color-block subtext">次文字 #666</div>
+                <div class="color-block bg">背景 #fff</div>
+            </div>
+            <ul>
+                <li><strong>色彩方案</strong>：采用更具温度感的渐变橘色背景，从淡橘色(#ffd6b0)到主橘色(#ff671f)，营造轻盈、现代的氛围。</li>
+                <li><strong>视觉元素</strong>：
+                    <ul>
+                        <li>毛玻璃玻璃效果：卡片使用backdrop-filter实现磨砂玻璃效果，增强层次感</li>
+                        <li>圆角设计：所有元素采用圆角风格，提供友好的视觉感受</li>
+                        <li>阴影效果：适当的阴影增强悬浮感和整体体验</li>
+                        <li>图标提示：输入框左侧的图标提供直观的功能提示</li>
+                        <li>渐变按钮：主按钮采用渐变橘色，搭配圆角和阴影</li>
+                    </ul>
+                </li>
+                <li><strong>交互设计</strong>：
+                    <ul>
+                        <li>可点击元素：所有交互元素可点击，并有相应的反馈效果</li>
+                        <li>密码可见切换：输入框右侧可切换密码明文/密文</li>
+                        <li>按钮按下有缩放反馈，点击登录有交互提示</li>
+                        <li>记住我选项可以切换选中状态</li>
+                        <li>忘记密码和注册为辅助操作链接</li>
+                    </ul>
+                </li>
+                <li><strong>用户体验考量</strong>：
+                    <ul>
+                        <li>高易用性：只展示必要的登录元素，减少认知负担</li>
+                        <li>输入提示清晰，表单验证友好</li>
+                        <li>整体风格轻盈现代，适合移动端展示</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // 密码可见切换
+        const pwInput = document.getElementById('password');
+        const togglePw = document.getElementById('togglePw');
+        let pwVisible = false;
+        togglePw.addEventListener('click', function() {
+            pwVisible = !pwVisible;
+            pwInput.type = pwVisible ? 'text' : 'password';
+            togglePw.className = pwVisible ? 'ri-eye-line toggle-pw' : 'ri-eye-off-line toggle-pw';
+        });
+        // 登录交互
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            if (username && password) {
+                alert('登录成功！');
+            } else {
+                alert('请填写完整的登录信息！');
+            }
+        });
+    </script>
+</body>
+</html> 
