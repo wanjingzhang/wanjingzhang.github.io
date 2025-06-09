@@ -27,3 +27,6 @@ npm i
 Cursor 使用Models claude-3.7sonnet, Agent权限比较大还可以执行命令行
 
 后端使用Sealos MongDB 数据库 Node.js 接口地址
+
+# 问题
+<https://uniapp.dcloud.net.cn/tutorial/use-html5plus.html>
